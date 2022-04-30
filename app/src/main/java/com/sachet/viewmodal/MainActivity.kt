@@ -12,12 +12,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        viewModal = ViewModelProvider(this).get(MainActivityViewModal::class.java)
-
-        viewModal.count.observe(this) {
-            println(it)
-            binding.textDisplay.text = it.toString()
-        }
-
+        binding.lifecycleOwner = this
+        binding.myViewModal = viewModal
     }
 }
